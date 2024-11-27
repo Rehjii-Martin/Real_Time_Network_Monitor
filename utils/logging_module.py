@@ -14,6 +14,5 @@ def log_connections(connections, log_file="network_logs.csv"):
     """
     df = pd.DataFrame(connections)
     df["timestamp"] = datetime.now()
-    # Check if the file exists to write headers accordingly
     write_header = not os.path.isfile(log_file)
     df.to_csv(log_file, mode="a", header=write_header, index=False)
