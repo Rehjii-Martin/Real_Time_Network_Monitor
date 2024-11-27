@@ -19,6 +19,12 @@ def main():
         while True:
             connections = get_active_connections()
             anomalies = detect_anomalies(connections)
+            # Console output of active connections
+            print(f"\nActive Connections at {datetime.now()}:")
+            for conn in connections:
+                print(
+                    f"Process: {conn['process_name']}, Local: {conn['local_ip']}:{conn['local_port']} <--> Remote: {conn['remote_ip']}:{conn['remote_port']} ({conn['hostname']})"
+                )
             if anomalies:
                 print(f"\n[ALERT] Anomalies detected at {datetime.now()}:")
                 for anomaly in anomalies:
@@ -39,3 +45,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
